@@ -10,15 +10,7 @@ import {
 } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { useQuery, useMutation } from "@tanstack/react-query";
-import {
-  Thermometer,
-  Droplets,
-  Wind,
-  Zap,
-  Power,
-  MapPin,
-  Clock,
-} from "lucide-react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Colors from "@/constants/colors";
 import Card from "@/components/Card";
 import api, { DeviceSnapshot } from "@/utils/api";
@@ -86,7 +78,7 @@ export default function DeviceDetailScreen() {
             <Text style={styles.deviceName}>{device.name}</Text>
             {device.location && (
               <View style={styles.locationRow}>
-                <MapPin size={16} color={Colors.textMuted} />
+                <MaterialCommunityIcons name="map-marker" size={16} color={Colors.textMuted} />
                 <Text style={styles.locationText}>{device.location.label}</Text>
               </View>
             )}
@@ -112,7 +104,7 @@ export default function DeviceDetailScreen() {
               disabled={toggleMutation.isPending}
               activeOpacity={0.7}
             >
-              <Power size={32} color={ledOn ? Colors.background : Colors.text} />
+              <MaterialCommunityIcons name="power" size={32} color={ledOn ? Colors.background : Colors.text} />
             </TouchableOpacity>
           </Animated.View>
         </View>
@@ -124,7 +116,7 @@ export default function DeviceDetailScreen() {
           {latestReadings?.dht11 && (
             <>
               <Card style={styles.sensorCard}>
-                <Thermometer size={28} color={Colors.primary} />
+                <MaterialCommunityIcons name="thermometer" size={28} color={Colors.primary} />
                 <Text style={styles.sensorLabel}>Temperature</Text>
                 <Text style={styles.sensorValue}>{latestReadings.dht11.temp}°C</Text>
                 <Text style={styles.sensorTime}>
@@ -133,7 +125,7 @@ export default function DeviceDetailScreen() {
               </Card>
 
               <Card style={styles.sensorCard}>
-                <Droplets size={28} color={Colors.secondary} />
+                <MaterialCommunityIcons name="water" size={28} color={Colors.secondary} />
                 <Text style={styles.sensorLabel}>Humidity</Text>
                 <Text style={styles.sensorValue}>{latestReadings.dht11.humidity}%</Text>
                 <Text style={styles.sensorTime}>
@@ -145,7 +137,7 @@ export default function DeviceDetailScreen() {
 
           {latestReadings?.mq2 && (
             <Card style={styles.sensorCard}>
-              <Wind size={28} color={Colors.warning} />
+              <MaterialCommunityIcons name="weather-windy" size={28} color={Colors.warning} />
               <Text style={styles.sensorLabel}>Gas Level</Text>
               <Text style={styles.sensorValue}>{latestReadings.mq2.gas_ppm} ppm</Text>
               <Text style={styles.sensorTime}>
@@ -156,7 +148,7 @@ export default function DeviceDetailScreen() {
 
           {latestReadings?.hx711 && (
             <Card style={styles.sensorCard}>
-              <Zap size={28} color={Colors.accent} />
+              <MaterialCommunityIcons name="flash" size={28} color={Colors.accent} />
               <Text style={styles.sensorLabel}>Weight</Text>
               <Text style={styles.sensorValue}>{latestReadings.hx711.weight_g}g</Text>
               <Text style={styles.sensorTime}>
@@ -204,7 +196,7 @@ export default function DeviceDetailScreen() {
             )}
             {latestOutputs.timestamp && (
               <View style={styles.timestampRow}>
-                <Clock size={14} color={Colors.textMuted} />
+                <MaterialCommunityIcons name="clock" size={14} color={Colors.textMuted} />
                 <Text style={styles.timestampText}>
                   Last update: {getTimeAgo(latestOutputs.timestamp)}
                 </Text>

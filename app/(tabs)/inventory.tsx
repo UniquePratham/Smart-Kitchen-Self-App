@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useQuery } from "@tanstack/react-query";
-import { Package, AlertCircle } from "lucide-react-native";
+import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import Colors from "@/constants/colors";
 import Card from "@/components/Card";
 import api, { InventoryItem, Device } from "@/utils/api";
@@ -62,7 +62,7 @@ export default function InventoryScreen() {
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
       <View style={styles.header}>
-        <Package size={28} color={Colors.primary} />
+        <Feather name="package" size={28} color={Colors.primary} />
         <View style={styles.headerText}>
           <Text style={styles.title}>Inventory</Text>
           <Text style={styles.subtitle}>Track your items</Text>
@@ -75,13 +75,13 @@ export default function InventoryScreen() {
         </View>
       ) : !devicesQuery.data || devicesQuery.data.length === 0 ? (
         <View style={styles.centerContainer}>
-          <AlertCircle size={64} color={Colors.textMuted} />
+          <MaterialCommunityIcons name="alert-circle" size={64} color={Colors.textMuted} />
           <Text style={styles.emptyText}>No devices found</Text>
           <Text style={styles.emptySubtext}>Add devices to track inventory</Text>
         </View>
       ) : (
         <View style={styles.centerContainer}>
-          <Package size={64} color={Colors.textMuted} />
+          <Feather name="package" size={64} color={Colors.textMuted} />
           <Text style={styles.emptyText}>Coming Soon</Text>
           <Text style={styles.emptySubtext}>
             Inventory management will be available in the next update

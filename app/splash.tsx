@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { View, Text, StyleSheet, Animated } from "react-native";
 import { router } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { Zap } from "lucide-react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Colors from "@/constants/colors";
 import { useAuth } from "@/context/AuthContext";
 
@@ -32,7 +32,7 @@ export default function SplashScreen() {
     if (!isLoading) {
       const timer = setTimeout(() => {
         if (isAuthenticated) {
-          router.replace("/(tabs)");
+          router.replace("/(tabs)/dashboard");
         } else {
           router.replace("/login");
         }
@@ -54,7 +54,7 @@ export default function SplashScreen() {
         ]}
       >
         <View style={styles.iconCircle}>
-          <Zap size={48} color={Colors.primary} fill={Colors.primary} />
+          <MaterialCommunityIcons name="flash" size={48} color={Colors.primary} />
         </View>
         <Text style={styles.title}>IoT Nexus</Text>
         <Text style={styles.tagline}>Smart Control. Simplified.</Text>

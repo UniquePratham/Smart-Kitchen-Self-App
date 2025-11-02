@@ -32,19 +32,13 @@ git clone <YOUR_GIT_URL>
 # Step 2: Navigate to the project directory
 cd smart-kitchen-app
 
-# Step 3: Install dependencies
-bun install
-# or
+# Step 3: Install dependencies (npm preferred)
 npm install
 
 # Step 4: Start the development server
-bun run start
-# or
 npm run start
 
 # Step 5: Start web preview (optional)
-bun run start-web
-# or
 npm run start-web
 ```
 
@@ -58,7 +52,7 @@ This project uses modern mobile development technologies:
 - **TypeScript** - Type-safe JavaScript
 - **React Query** - Server state management
 - **Zustand** - State management
-- **Lucide React Native** - Beautiful icons
+- **@expo/vector-icons** - Icon packs (Feather, MaterialCommunityIcons, etc.)
 - **NativeWind** - Utility-first CSS framework
 
 ## Testing Your App
@@ -124,7 +118,16 @@ The app connects to a backend API for:
 - Inventory tracking
 - Real-time data updates
 
-Backend endpoint: `https://iot-backend-plhm.onrender.com`
+Backend base URL defaults to: `https://iot-backend-plhm.onrender.com`
+
+You can override the backend without code changes using any of these:
+
+- Expo env: set `EXPO_PUBLIC_API_URL` (recommended)
+- Compat env (for curl docs): set `APP_BASE_URL`
+- Expo config: edit `app.json` → `expo.extra.API_BASE_URL`
+
+Resolution order used by `utils/api.ts`:
+`EXPO_PUBLIC_API_URL` → `APP_BASE_URL` → `expo.extra.API_BASE_URL` → default
 
 ## Development
 

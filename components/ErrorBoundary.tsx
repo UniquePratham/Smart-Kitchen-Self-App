@@ -1,6 +1,6 @@
 import React, { Component, ReactNode } from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { AlertTriangle } from "lucide-react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Colors from "@/constants/colors";
 import Button from "./Button";
 
@@ -42,7 +42,7 @@ export default class ErrorBoundary extends Component<Props, State> {
                 <View style={styles.container}>
                     <View style={styles.content}>
                         <View style={styles.iconContainer}>
-                            <AlertTriangle size={64} color={Colors.error} />
+                            <MaterialCommunityIcons name="alert" size={64} color={Colors.error} />
                         </View>
 
                         <Text style={styles.title}>Something went wrong</Text>

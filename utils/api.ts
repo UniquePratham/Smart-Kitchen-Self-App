@@ -1,13 +1,25 @@
 import axios, { AxiosError } from "axios";
+import Constants from "expo-constants";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export const BASE_URL = "https://iot-backend-plhm.onrender.com";
+// Resolve base URL in this order:
+// 1) EXPO_PUBLIC_API_URL (build-time public env)
+// 2) APP_BASE_URL (compat with provided cURL docs)
+// 3) expo extra.API_BASE_URL from app.json
+// 4) hard-coded default (Render URL)
+export const BASE_URL =
+  (process.env.EXPO_PUBLIC_API_URL as string | undefined) ||
+  (process.env.APP_BASE_URL as string | undefined) ||
+  ((Constants?.expoConfig as any)?.extra?.API_BASE_URL as string | undefined) ||
+  "https://iot-backend-plhm.onrender.com";
 
 const api = axios.create({
   baseURL: BASE_URL,
   timeout: 15000,
   headers: {
     "Content-Type": "application/json",
+    Accept: "application/json",
+    "X-Requested-With": "XMLHttpRequest",
   },
 });
 
@@ -17,7 +29,8 @@ api.interceptors.request.use(
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
-    console.log(`[API] ${config.method?.toUpperCase()} ${config.url}`);
+    const fullUrl = `${config.baseURL || BASE_URL}${config.url}`;
+    console.log(`[API] ${config.method?.toUpperCase()} ${fullUrl}`);
     return config;
   },
   (error) => {
@@ -32,7 +45,11 @@ api.interceptors.response.use(
     return response;
   },
   (error: AxiosError) => {
-    console.error("[API] Response error:", error.response?.status, error.message);
+    try {
+      console.error("[API] Response error:", error.response?.status, error.message, error.toJSON ? error.toJSON() : null);
+    } catch {
+      console.error("[API] Response error (logging failed):", error.message);
+    }
     return Promise.reject(error);
   }
 );

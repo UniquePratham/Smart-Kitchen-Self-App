@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { BarChart3, TrendingUp, Activity, Zap } from "lucide-react-native";
+import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import Colors from "@/constants/colors";
 import Card from "@/components/Card";
 
@@ -11,7 +11,7 @@ export default function AnalyticsScreen() {
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
       <View style={styles.header}>
-        <BarChart3 size={28} color={Colors.primary} />
+        <Feather name="bar-chart-2" size={28} color={Colors.primary} />
         <View style={styles.headerText}>
           <Text style={styles.title}>Analytics</Text>
           <Text style={styles.subtitle}>Monitor your IoT ecosystem</Text>
@@ -21,7 +21,7 @@ export default function AnalyticsScreen() {
       <ScrollView contentContainerStyle={styles.content}>
         <Card style={styles.statCard}>
           <View style={styles.statIcon}>
-            <TrendingUp size={24} color={Colors.secondary} />
+            <Feather name="trending-up" size={24} color={Colors.secondary} />
           </View>
           <Text style={styles.statLabel}>Total Devices</Text>
           <Text style={styles.statValue}>0</Text>
@@ -29,7 +29,7 @@ export default function AnalyticsScreen() {
 
         <Card style={styles.statCard}>
           <View style={styles.statIcon}>
-            <Activity size={24} color={Colors.primary} />
+            <Feather name="activity" size={24} color={Colors.primary} />
           </View>
           <Text style={styles.statLabel}>Active Now</Text>
           <Text style={styles.statValue}>0</Text>
@@ -37,7 +37,7 @@ export default function AnalyticsScreen() {
 
         <Card style={styles.statCard}>
           <View style={styles.statIcon}>
-            <Zap size={24} color={Colors.warning} />
+            <MaterialCommunityIcons name="flash" size={24} color={Colors.warning} />
           </View>
           <Text style={styles.statLabel}>Alerts Today</Text>
           <Text style={styles.statValue}>0</Text>

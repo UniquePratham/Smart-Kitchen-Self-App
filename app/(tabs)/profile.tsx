@@ -9,14 +9,7 @@ import {
 } from "react-native";
 import { router } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import {
-  User,
-  Mail,
-
-  Settings,
-  Bell,
-  Shield,
-} from "lucide-react-native";
+import { Feather } from "@expo/vector-icons";
 import Colors from "@/constants/colors";
 import Card from "@/components/Card";
 import Button from "@/components/Button";
@@ -46,15 +39,15 @@ export default function ProfileScreen() {
   };
 
   const menuItems = [
-    { icon: Settings, label: "Settings", onPress: () => {} },
-    { icon: Bell, label: "Notifications", onPress: () => {} },
-    { icon: Shield, label: "Privacy & Security", onPress: () => {} },
+    { iconName: "settings", label: "Settings", onPress: () => { } },
+    { iconName: "bell", label: "Notifications", onPress: () => { } },
+    { iconName: "shield", label: "Privacy & Security", onPress: () => { } },
   ];
 
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
       <View style={styles.header}>
-        <User size={28} color={Colors.primary} />
+        <Feather name="user" size={28} color={Colors.primary} />
         <View style={styles.headerText}>
           <Text style={styles.title}>Profile</Text>
           <Text style={styles.subtitle}>Manage your account</Text>
@@ -64,11 +57,11 @@ export default function ProfileScreen() {
       <ScrollView contentContainerStyle={styles.content}>
         <Card style={styles.profileCard}>
           <View style={styles.avatar}>
-            <User size={48} color={Colors.primary} />
+            <Feather name="user" size={48} color={Colors.primary} />
           </View>
           <Text style={styles.userName}>{user?.name || "User"}</Text>
           <View style={styles.emailContainer}>
-            <Mail size={16} color={Colors.textMuted} />
+            <Feather name="mail" size={16} color={Colors.textMuted} />
             <Text style={styles.userEmail}>{user?.email || "user@email.com"}</Text>
           </View>
         </Card>
@@ -83,7 +76,7 @@ export default function ProfileScreen() {
               activeOpacity={0.7}
             >
               <View style={styles.menuItemLeft}>
-                <item.icon size={20} color={Colors.text} />
+                <Feather name={(item as any).iconName} size={20} color={Colors.text} />
                 <Text style={styles.menuItemText}>{item.label}</Text>
               </View>
               <Text style={styles.menuItemArrow}>›</Text>

@@ -10,7 +10,7 @@ import {
 import { router } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useQuery } from "@tanstack/react-query";
-import { Thermometer, Wifi, WifiOff } from "lucide-react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Colors from "@/constants/colors";
 import Card from "@/components/Card";
 import FloatingActionButton from "@/components/FloatingActionButton";
@@ -54,9 +54,9 @@ export default function DashboardScreen() {
             </View>
             <View style={[styles.statusBadge, online ? styles.onlineBadge : styles.offlineBadge]}>
               {online ? (
-                <Wifi size={16} color={Colors.online} />
+                <MaterialCommunityIcons name="wifi" size={16} color={Colors.online} />
               ) : (
-                <WifiOff size={16} color={Colors.offline} />
+                <MaterialCommunityIcons name="wifi-off" size={16} color={Colors.offline} />
               )}
               <Text style={[styles.statusText, online ? styles.onlineText : styles.offlineText]}>
                 {online ? "Online" : "Offline"}
@@ -66,7 +66,7 @@ export default function DashboardScreen() {
 
           <View style={styles.deviceMeta}>
             <View style={styles.metaItem}>
-              <Thermometer size={16} color={Colors.textMuted} />
+              <MaterialCommunityIcons name="thermometer" size={16} color={Colors.textMuted} />
               <Text style={styles.metaText}>Last update: {getTimeAgo(item.updatedAt)}</Text>
             </View>
           </View>

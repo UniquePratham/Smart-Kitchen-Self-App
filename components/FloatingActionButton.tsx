@@ -5,7 +5,7 @@ import {
     StyleSheet,
     ViewStyle,
 } from "react-native";
-import { Plus } from "lucide-react-native";
+import { Feather } from "@expo/vector-icons";
 import Colors from "@/constants/colors";
 
 interface FloatingActionButtonProps {
@@ -66,7 +66,7 @@ export default function FloatingActionButton({
                 onPressOut={handlePressOut}
                 activeOpacity={0.9}
             >
-                {icon || <Plus size={24} color={Colors.background} />}
+                {icon || <Feather name="plus" size={24} color={Colors.background} />}
             </TouchableOpacity>
         </Animated.View>
     );

@@ -3,8 +3,12 @@
 # dependencies
 node_modules/
 
+# lockfiles (prefer npm)
+bun.lock
+
 # Expo
 .expo/
+.expo-shared/
 dist/
 web-build/
 expo-env.d.ts
@@ -12,10 +16,19 @@ expo-env.d.ts
 # Native
 *.orig.*
 *.jks
+*.keystore
 *.p8
 *.p12
 *.key
 *.mobileprovision
+android/app/build/
+android/.cxx/
+android/.gradle/
+ios/build/
+ios/Pods/
+*.apk
+*.aab
+*.ipa
 
 # Metro
 .metro-health-check*
@@ -24,6 +37,7 @@ expo-env.d.ts
 npm-debug.*
 yarn-debug.*
 yarn-error.*
+*.log
 
 # macOS
 .DS_Store
@@ -31,7 +45,20 @@ yarn-error.*
 
 # local env files
 .env*.local
+.env
+.env.development
+.env.production
+.env.test
+
+package-lock.json
 
 # typescript
 *.tsbuildinfo
 .vercel
+
+# IDE/editor
+.idea/
+.vscode/
+
+# tests/coverage
+coverage/

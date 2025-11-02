@@ -7,7 +7,7 @@ import {
   TextInputProps,
   TouchableOpacity,
 } from "react-native";
-import { Eye, EyeOff } from "lucide-react-native";
+import { Feather } from "@expo/vector-icons";
 import Colors from "@/constants/colors";
 
 interface InputProps extends TextInputProps {
@@ -41,9 +41,9 @@ export default function Input({
             onPress={() => setIsSecure(!isSecure)}
           >
             {isSecure ? (
-              <EyeOff size={20} color={Colors.textMuted} />
+              <Feather name="eye-off" size={20} color={Colors.textMuted} />
             ) : (
-              <Eye size={20} color={Colors.textMuted} />
+              <Feather name="eye" size={20} color={Colors.textMuted} />
             )}
           </TouchableOpacity>
         )}

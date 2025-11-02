@@ -39,6 +39,9 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "API_BASE_URL": "https://iot-backend-plhm.onrender.com"
     }
   }
 }

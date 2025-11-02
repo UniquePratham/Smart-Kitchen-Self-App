@@ -6,7 +6,7 @@ import {
     StyleSheet,
     TouchableOpacity,
 } from "react-native";
-import { CheckCircle, AlertCircle, XCircle, X } from "lucide-react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Colors from "@/constants/colors"; interface ToastProps {
     visible: boolean;
     message: string;
@@ -68,13 +68,13 @@ export default function Toast({
     }, [visible, duration, hideToast, translateY, opacity]); const getIcon = () => {
         switch (type) {
             case "success":
-                return <CheckCircle size={20} color={Colors.success} />;
+                return <MaterialCommunityIcons name="check-circle" size={20} color={Colors.success} />;
             case "error":
-                return <XCircle size={20} color={Colors.error} />;
+                return <MaterialCommunityIcons name="close-circle" size={20} color={Colors.error} />;
             case "warning":
-                return <AlertCircle size={20} color={Colors.warning} />;
+                return <MaterialCommunityIcons name="alert-circle" size={20} color={Colors.warning} />;
             default:
-                return <AlertCircle size={20} color={Colors.primary} />;
+                return <MaterialCommunityIcons name="information" size={20} color={Colors.primary} />;
         }
     };
 
@@ -122,7 +122,7 @@ export default function Toast({
                 {getIcon()}
                 <Text style={styles.message}>{message}</Text>
                 <TouchableOpacity onPress={hideToast} style={styles.closeButton}>
-                    <X size={16} color={Colors.textMuted} />
+                    <MaterialCommunityIcons name="close" size={16} color={Colors.textMuted} />
                 </TouchableOpacity>
             </View>
         </Animated.View>

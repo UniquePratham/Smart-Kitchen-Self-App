@@ -9,7 +9,7 @@ import {
   Alert,
 } from "react-native";
 import { router } from "expo-router";
-import { Zap } from "lucide-react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Colors from "@/constants/colors";
 import { useAuth } from "@/context/AuthContext";
 import Button from "@/components/Button";
@@ -40,7 +40,7 @@ export default function SignupScreen() {
 
     try {
       await signup(email, password, name || undefined);
-      router.replace("/(tabs)");
+      router.replace("/(tabs)/dashboard");
     } catch (error) {
       console.error("Signup error:", error);
     }
@@ -58,7 +58,7 @@ export default function SignupScreen() {
         >
           <View style={styles.header}>
             <View style={styles.iconCircle}>
-              <Zap size={36} color={Colors.primary} fill={Colors.primary} />
+              <MaterialCommunityIcons name="flash" size={36} color={Colors.primary} />
             </View>
             <Text style={styles.title}>Create Account</Text>
             <Text style={styles.subtitle}>Join IoT Nexus today</Text>
